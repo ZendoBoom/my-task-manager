@@ -1,0 +1,354 @@
+/* --- Общие стили --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+    max-width: 100%;
+    position: relative;
+}
+
+.container {
+    max-width: 100%;
+}
+
+/* --- Контейнер заголовка и кнопки темы --- */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.header-container h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- Темы --- */
+body.light-theme {
+    background: #f5f5f5;
+    color: #333;
+}
+
+body.dark-theme {
+    background: #222;
+    color: white;
+}
+
+/* --- Стили кнопки темы --- */
+.theme-toggle {
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.theme-toggle.dark {
+    background: #4CAF50;
+}
+
+.theme-toggle i {
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+body.dark-theme .theme-toggle {
+    background: #333;
+}
+
+body.dark-theme .theme-toggle i {
+    color: white;
+}
+
+/* --- Кнопки фильтров --- */
+.filter-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.filter-btn.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.filter-btn:hover:not(.active) {
+    background: #e0e0e0;
+}
+
+/* --- Кнопки и поля ввода --- */
+.custom-btn,
+.custom-input,
+.custom-select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 12px 24px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+/* --- Темная тема для кнопок --- */
+body.dark-theme .custom-btn:not([class*="status"]) {
+    background: #4CAF50;
+    color: white;
+}
+
+body.dark-theme .custom-btn:not([class*="status"]):hover {
+    background: #555;
+    color: white;
+}
+
+/* --- Поля ввода и селекты --- */
+.custom-input,
+.custom-select {
+    background: #f0f0f0;
+    color: #333;
+    border: none;
+}
+
+body.dark-theme .custom-input,
+body.dark-theme .custom-select {
+    background: #4CAF50;
+    color: white;
+}
+
+.custom-input:focus,
+.custom-select:focus {
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+/* --- Чекбокс --- */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.custom-checkbox {
+    display: none;
+}
+
+.custom-checkbox-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.custom-checkbox-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.custom-checkbox:checked + .custom-checkbox-label::before {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* --- Модальные окна --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-theme .modal-content {
+    background: #222;
+    color: white;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+/* --- Список задач --- */
+.task-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background: #f0f0f0;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+body.dark-theme .task-item {
+    background: #333;
+}
+#task-list{
+    padding-top: 15px;
+}
+.task-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+.task-actions{
+    padding-top: 10px;
+}
+.task-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-icon {
+    font-size: 1.5em;
+    margin-left: auto;
+}
+
+/* Звездочка избранного */
+.favorite-star {
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.favorite-star.selected {
+    color: gold;
+}
+
+/* --- Стили кнопок в модальном окне статуса --- */
+#status-modal .custom-btn {
+    background: #4CAF50;
+    color: white;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 8px 16px;
+}
+
+body.dark-theme #status-modal .custom-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+#status-modal .custom-btn:hover {
+    background: #45a049;
+}
+
+#status-modal .custom-btn:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* --- Стилизация календаря Flatpickr --- */
+.flatpickr-calendar {
+    z-index: 9999 !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 400px !important;
+    background: white !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-theme .flatpickr-calendar {
+    background: #222 !important;
+    color: white !important;
+}
+
+body.dark-theme .flatpickr-day:hover {
+    background: #4CAF50 !important;
+    color: white !important;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 420px) {
+    .header-container {
+        padding: 10px;
+    }
+
+    .theme-toggle {
+        right: 5px;
+        top: 5px;
+    }
+
+    .filter-buttons {
+        gap: 5px;
+        padding: 0 5px;
+    }
+
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        margin: 2px 0;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .custom-input,
+    .custom-select {
+        padding: 6px;
+        font-size: 0.9em;
+    }
+
+    .task-item {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+
+    .status-buttons button {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+}
