@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер задач</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="light-theme">
+<div class="container">
+    <div class="header-container">
+        <h1>Менеджер задач</h1>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-sun"></i>
+        </div>
+    </div>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="day">1 день</button>
+        <button class="filter-btn" data-filter="week">Неделя</button>
+        <button class="filter-btn" data-filter="month">Месяц</button>
+        <button class="filter-btn" data-filter="year">Год</button>
+    </div>
+    <button class="custom-btn" onclick="openCreateTaskModal()">Добавить задачу</button>
+    <div id="task-list"></div>
+</div>
+
+<!-- Модальное окно статуса -->
+<div id="status-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('status-modal')">&times;</span>
+        <h2>Выберите действие</h2>
+        <div id="status-options"></div>
+    </div>
+</div>
+
+<!-- Модальное окно создания задачи -->
+<div id="create-task-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('create-task-modal')">&times;</span>
+        <h2>Создать задачу</h2>
+        <form id="task-form-modal">
+            <input type="text" class="custom-input" id="task-title-modal" placeholder="Название задачи" required>
+            <select class="custom-select" id="color-picker-modal">
+                <option value="black">Черный</option>
+                <option value="red">Красный</option>
+                <option value="green">Зеленый</option>
+            </select>
+            <select class="custom-select" id="period-select">
+                <option value="day">1 день</option>
+                <option value="week">Неделя</option>
+                <option value="month">Месяц</option>
+                <option value="year">Год</option>
+                <option value="custom">Дата</option>
+            </select>
+            <div id="date-field" style="display: none;">
+                <label for="deadline-modal">Дата:</label>
+                <input type="text" id="deadline-modal" class="custom-input" placeholder="Выберите дату">
+            </div>
+            <select class="custom-select" id="text-style-modal">
+                <option value="normal">Обычный</option>
+                <option value="bold">Жирный</option>
+                <option value="italic">Курсив</option>
+                <option value="underline">Подчеркнутый</option>
+            </select>
+            <div class="checkbox-container">
+                <input type="checkbox" id="favorite-modal" class="custom-checkbox" />
+                <label class="custom-checkbox-label" for="favorite-modal">Добавить в избранное</label>
+            </div>
+            <button type="submit" class="custom-btn">Создать</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="script.js"></script>
+</body>
+</html>
